@@ -48,6 +48,10 @@ def icp_known_corresp(Line1, Line2, QInd, PInd):
 def compute_W(Q, P, MuQ, MuP):
     """
     Compute cross covariance matrix W with weight 1
+    Q: 2xN matrix of points from Line1
+    P: 2xN matrix of points from Line2
+    MuQ: 2x1 mean of points from Line1
+    MuP: 2x1 mean of points from Line2
     """
     mP = P - MuP
     mQ = Q - MuQ
@@ -84,10 +88,10 @@ def compute_error(Q, OptimizedPoints):
 def show_figure(Line1, Line2):
     plt.figure()
     plt.scatter(Line1[0], Line1[1], marker='o', s=2, label='Line 1')
-    plt.scatter(Line2[0], Line2[1], s=1, label='Line 2')
+    plt.scatter(Line2[0], Line2[1], s=3, label='Line 2')
     
-    plt.xlim([-8, 8])
-    plt.ylim([-8, 8])
+    plt.xlim([-6, 6])
+    plt.ylim([-6, 6])
     plt.legend()  
     
     plt.show()
@@ -100,7 +104,7 @@ def init_figure():
     fig.canvas.draw()
     
     line1_fig = plt.scatter([], [], marker='o', s=2, label='Line 1')
-    line2_fig = plt.scatter([], [], marker='o', s=1, label='Line 2')
+    line2_fig = plt.scatter([], [], marker='o', s=3, label='Line 2')
     # plt.title(title)
     plt.xlim([-8, 8])
     plt.ylim([-8, 8])
